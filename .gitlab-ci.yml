@@ -1,0 +1,27 @@
+image: debian:jessie
+
+stages:
+  - build
+  - report
+
+before_script:
+  - which curl || true
+  - apt-get update && apt-get install -y curl
+  - ./github-status.sh pending
+
+job-build:
+  stage: build
+  script:
+    - /bin/true
+
+job-report-failure:
+  stage: report
+  when: on_failure
+  script:
+    - ./github-status.sh failure
+
+job-report-success:
+  stage: report
+  when: on_success
+  script:
+    - ./github-status.sh success
