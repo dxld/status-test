@@ -7,12 +7,16 @@ stages:
 before_script:
   - apt-get -q update >/dev/null 2>&1 && apt-get -y install curl >/dev/null 2>&1
   - ./github-status.sh pending
-  - /bin/false
 
-job-build:
+job-build-sucess:
   stage: build
   script:
     - /bin/true
+
+job-build-fail:
+  stage: build
+  script:
+    - /bin/false
 
 job-report-failure:
   stage: report
