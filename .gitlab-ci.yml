@@ -5,7 +5,7 @@ stages:
   - report
 
 before_script:
-  - apt-get -q update && apt-get -y -q install curl
+  - apt-get -q update >/dev/null 2>&1 && apt-get -y install curl >/dev/null 2>&1
   - ./github-status.sh pending
   - /bin/false
 
