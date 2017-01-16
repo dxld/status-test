@@ -5,14 +5,14 @@ stages:
   - report
 
 before_script:
-  - which curl || true
-  - apt-get update && apt-get install -y -qq curl
+  - apt-get -q update && apt-get -y -q install curl
   - ./github-status.sh pending
+  - /bin/false
 
 job-build:
   stage: build
   script:
-    - /bin/false
+    - /bin/true
 
 job-report-failure:
   stage: report
