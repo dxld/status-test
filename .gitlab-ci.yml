@@ -6,13 +6,13 @@ stages:
 
 before_script:
   - which curl || true
-  - apt-get update && apt-get install -y curl
+  - apt-get update && apt-get install -y -qq curl
   - ./github-status.sh pending
 
 job-build:
   stage: build
   script:
-    - /bin/true
+    - /bin/false
 
 job-report-failure:
   stage: report
